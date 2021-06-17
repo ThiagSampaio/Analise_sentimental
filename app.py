@@ -7,29 +7,31 @@ from Modelo_matematico import *
 
 ###-------------------- FIM DA IMPORTAÇÃO ------------------------------#############
 
-###-------------------- Importando BANCO_de_Dados__________________________##########
+
+###-------------------- Importando Banco de dados ----------------------#############
 nltk.download('stopwords')
 with open('Parametros/freqs.json', 'rb') as fp:
     freqs = pickle.load(fp)
 with open('Parametros/theta.json', 'rb') as fp:
     theta = pickle.load(fp)
 
-lista_nome = lista_nomes()#pct nomes brasileiros
+lista_nome = lista_nomes()  # pct nomes brasileiros
 freqs = freqs
 theta = theta
 
 
-
+###-------------------- Cria rotas  ----------------------#############
 app = Flask(__name__)
 
+
 @app.route('/', methods=["GET"])
-def hello_word():
+def home():
     return render_template("index.html")
 
 
 @app.route('/', methods=['POST'])
 def predict():
-    #importando_tweets_recentes
+    # importando_tweets_recentes
     term = request.form['term']
     term = str(term)
     api = TwitterClient()
@@ -66,9 +68,8 @@ def predict():
                 pontos_neg = y_hat
     contador = (cont_pos, cont_neg)
 
+    return render_template("index_1.html", prediction=contador, legal=tweet_legal, chato=tweet_chato)
 
-
-    return render_template("index_1.html", prediction = contador, legal = tweet_legal,  chato = tweet_chato)
 
 '''
 @app.route('/',methods=["cache"])
