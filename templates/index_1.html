@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>SentimentAnalysis by Thiago_Sampaio</title>
+
+         <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Ubuntu" rel="stylesheet">
+
+        <!-- CSS Stylesheets -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/styles.css") }}" />
+
+        <!-- Font Awesome -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+        <!-- Bootstrap Scripts -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <section class="colored-section" id="title">
+
+            <div class="container-fluid">
+
+                <!-- Nav Bar -->
+
+                <nav class="navbar navbar-expand-lg navbar-dark">
+
+                    <a class="navbar-brand" href="http://127.0.0.1:3000/">NLP by Thiago Sampaio</a>
+
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:3000/#footer"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:3000/#pricing"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="http://127.0.0.1:3000/#cta"></a>
+                        </li>
+                    </ul>
+                    </div>
+                </nav>
+                 <!-- Title -->
+
+                <div class="row justify-content-between">
+
+                    <div class="col-4">
+                        <h1 class="big-heading">Veja o Resultado da sua busca ➡️.
+                            <br>
+                            Veja o tweet mais negativo e o mais positivo.⬇️ </h1>
+                        <!--
+                        <button type="button" class="btn btn-dark btn-lg download-button"><i class="fab fa-apple"></i> Download</button>
+                        <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fab fa-google-play"></i> Download</button>
+                        -->
+                    </div>
+                <!-- Quadrados -->
+
+                    <link rel="stylesheet" href="./index_files/font-awesome.min.css">
+                    <div class="col-4">
+                        <div class="container">
+	                        <div class="row">
+	                            <br>
+	                            <div class="col text-center">
+		                            <h2>Contador</h2>
+                                </div>
+                            </div>
+
+		                    <div class="row text-center">
+	                            <div class="col">
+	                                <div class="counter">
+                                        <h1>👇</h1>
+                                        {% if prediction %}
+                                            <h2 class="text - center">{{prediction[0] + prediction[1]}}</h2>
+                                        {% endif %}
+                                        <p class="count-text ">Tweets feitos recentemente sobre o termo pesquisado!</p>
+                                    </div>
+	                            </div>
+
+                                <div class="col">
+                                    <div class="counter">
+                                        <h1>😁</h1>
+                                        {% if prediction %}
+                                            <h2 class="text - center">{{prediction[0]}}</h2>
+                                        {% endif %}
+                                        <p class="count-text ">Tweets positivos</p>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="counter">
+                                        <h1>😡</h1>
+                                        {% if prediction %}
+                                            <h2 class="text - center">{{prediction[1]}}</h2>
+                                        {% endif %}
+                                        <p class="count-text ">Twees negativos</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+          <!-- Testimonials -->
+
+        <section class="colored-section" id="testimonials">
+
+            <div id="testimonial-carousel" class="carousel slide" data-ride="false">
+                <div class="carousel-inner">
+                    <div class="carousel-item active container-fluid">
+                        <h2 class="testimonial-text">{{legal}}</h2>
+                        <h1>😁</h1>
+                    </div>
+
+                <div class="carousel-item container-fluid">
+                    <h2 class="testimonial-text">{{chato}}</h2>
+                    <h1>😭</h1>
+                </div>
+             </div>
+            <a class="carousel-control-prev" href="#testimonial-carousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+                <a class="carousel-control-next" href="#testimonial-carousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+
+        <section class="colored-section" id="cta">
+
+            <div class="container-fluid">
+
+                <h3 class="big-heading">Deseja fazer outra pesquisa?👨‍💻👩‍💻</h3>
+                <h3 class="big-heading">Obs: Outra pagina irá carregar com os resultados</h3>
+                <form class="p-3 text-center" action="http://127.0.0.1:3000/" ,="" method="post" enctype="multipart/form-data">
+                    <input class="form-control" type="text" name="term">
+                    <input class="btn btn-primary mt-3" type="submit" value="Predict Sentiment">
+                </form>
+                {% if prediction %}
+                    <p class="text - center">{{prediction}}</p>
+                {% endif %}
+            </div>
+        </section>
+
+          <!-- Footer -->
+
+        <footer class="white-section" id="footer">
+            <div class="container-fluid">
+                <h3>Redes Sociais/Contato</h3>
+                <i class="social-icon fab fa-linkedin-in"></i>
+                <i class="social-icon fab fa-twitter"></i>
+                <i class="social-icon fab fa-instagram"></i>
+                <i class="social-icon fas fa-envelope"></i>
+            </div>
+        </footer>
+
+
+        <script src="{{url_for('static', filename='js/javinha.js')}}"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        {% if prediction %}
+                <p class="text - center">{{prediction}}</p>
+        {% endif %}
