@@ -18,14 +18,15 @@ lista_nome = lista_nomes()#pct nomes brasileiros
 freqs = freqs
 theta = theta
 
-
-
 app = Flask(__name__)
 
 @app.route('/', methods=["GET"])
 def hello_word():
-    return render_template("index.html")
+        return render_template("index.html")
 
+@app.route('/index_1.html', methods=["GET"])
+def hello_word_1(predictions,legals,chatos):
+        return render_template("index_1.html", prediction = predictions, legal = legals, chato = chatos)
 
 @app.route('/', methods=['POST'])
 def predict():
@@ -67,8 +68,8 @@ def predict():
     contador = (cont_pos, cont_neg)
 
 
-
-    return render_template("index_1.html", prediction = contador, legal = tweet_legal,  chato = tweet_chato)
+    return hello_word_1(contador,tweet_legal,tweet_chato)
+    #return render_template("index_1.html", prediction = contador, legal = tweet_legal,  chato = tweet_chato)
 
 '''
 @app.route('/',methods=["cache"])
