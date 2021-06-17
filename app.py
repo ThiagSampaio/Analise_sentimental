@@ -40,6 +40,11 @@ def home():
     return render_template("index.html")
 
 
+@app.route('/index_1.html', methods=["GET"])
+def hello_word_1(predictions,legals,chatos):
+    return render_template("index_1.html", prediction=predictions, legal=legals, chato=chatos)
+
+
 @app.route('/', methods=['POST'])
 def predict():
     # importando_tweets_recentes
