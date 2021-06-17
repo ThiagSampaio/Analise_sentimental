@@ -1,7 +1,8 @@
 ###------------------ IMPORTANDO BIBLIOTECAS -------------------------###########
 
-from flask import Flask, render_template, request
+import os
 import pickle
+from flask import Flask, render_template, request
 from getting_data import TwitterClient
 from Modelo_matematico import *
 
@@ -10,10 +11,13 @@ from Modelo_matematico import *
 
 ###-------------------- Importando Banco de dados ----------------------#############
 nltk.download('stopwords')
-with open('Parametros/freqs.json', 'rb') as fp:
-    freqs = pickle.load(fp)
-with open('Parametros/theta.json', 'rb') as fp:
-    theta = pickle.load(fp)
+if os.path.isfile('Parametros/freqs.json'):
+    with open('Parametros/freqs.json', 'rb') as fp:
+        freqs = pickle.load(fp)
+
+if os.path.isfile('Parametros/theta.json'):
+    with open('Parametros/theta.json', 'rb') as fp:
+        theta = pickle.load(fp)
 
 lista_nome = lista_nomes()  # pct nomes brasileiros
 freqs = freqs
