@@ -1,7 +1,8 @@
 ###------------------ IMPORTANDO BIBLIOTECAS -------------------------###########
 
-import os
+import sys
 import pickle
+
 from flask import Flask, render_template, request
 from getting_data import TwitterClient
 from Modelo_matematico import *
@@ -11,13 +12,19 @@ from Modelo_matematico import *
 
 ###-------------------- Importando Banco de dados ----------------------#############
 nltk.download('stopwords')
-if os.path.isfile('Parametros/freqs.json'):
+try:
     with open('Parametros/freqs.json', 'rb') as fp:
         freqs = pickle.load(fp)
+except FileNotFoundError:
+    print('Está faltando o modelo freqs.json')
+    sys.exit(-1)
 
-if os.path.isfile('Parametros/theta.json'):
+try:
     with open('Parametros/theta.json', 'rb') as fp:
         theta = pickle.load(fp)
+except FileNotFoundError:
+    print('Está faltando o modelo theta.json')
+    sys.exit(-1)
 
 lista_nome = lista_nomes()  # pct nomes brasileiros
 freqs = freqs
