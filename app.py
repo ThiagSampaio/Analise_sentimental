@@ -1,4 +1,4 @@
-###------------------ IMPORTANDO BIBLIOTECAS -------------------------###########
+###------------------ Importa bibliotecas  -------------------------###########
 
 import sys
 import pickle
@@ -7,12 +7,11 @@ from flask import Flask, render_template, request
 from getting_data import TwitterClient
 from Modelo_matematico import *
 
-###-------------------- FIM DA IMPORTAÇÃO ------------------------------#############
 
-
-###-------------------- Importando Banco de dados ----------------------#############
+###-------------------- Importa parâmetros ----------------------#############
 nltk.download('stopwords')
 try:
+    # TODO: Baixar de algum lugar
     with open('Parametros/freqs.json', 'rb') as fp:
         freqs = pickle.load(fp)
 except FileNotFoundError:
@@ -20,6 +19,7 @@ except FileNotFoundError:
     sys.exit(-1)
 
 try:
+    # TODO: Baixar de algum lugar
     with open('Parametros/theta.json', 'rb') as fp:
         theta = pickle.load(fp)
 except FileNotFoundError:
@@ -41,7 +41,7 @@ def home():
 
 
 @app.route('/index_1.html', methods=["GET"])
-def hello_word_1(predictions,legals,chatos):
+def hello_word_1(predictions, legals, chatos):
     return render_template("index_1.html", prediction=predictions, legal=legals, chato=chatos)
 
 
@@ -84,7 +84,7 @@ def predict():
                 pontos_neg = y_hat
     contador = (cont_pos, cont_neg)
 
-    return hello_word_1(contador,tweet_legal,tweet_chato)
+    return hello_word_1(contador, tweet_legal, tweet_chato)
     #return render_template("index_1.html", prediction = contador, legal = tweet_legal,  chato = tweet_chato)
 
 
