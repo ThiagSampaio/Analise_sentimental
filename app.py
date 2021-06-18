@@ -84,7 +84,8 @@ def predict():
                 pontos_neg = y_hat
     contador = (cont_pos, cont_neg)
 
-    return render_template("index_1.html", prediction=contador, legal=tweet_legal, chato=tweet_chato)
+    return hello_word_1(contador,tweet_legal,tweet_chato)
+    #return render_template("index_1.html", prediction = contador, legal = tweet_legal,  chato = tweet_chato)
 
 
 '''
